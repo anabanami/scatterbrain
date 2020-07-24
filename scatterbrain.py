@@ -68,40 +68,40 @@ def V_Xe(r):
 A = np.zeros((N,N)) # main matrix
 dr = r[1] - r[0] # step size
 
-second_dR = np.zeros_like(A) # second derivative matrix (mixed? order approximation)
+second_D = np.zeros_like(A) # second derivative matrix (4th order approximation)
 for j in range(N):
     if j == 0:
-        second_dR[j, j] = 35 / 12
-        second_dR[j, j+1] = -104 / 12
-        second_dR[j, j+2] = 114 / 12
-        second_dR[j, j+3] = -56 / 12
-        second_dR[j, j+4] = 11 / 12
+        second_D[j, j] = 35 / 12
+        second_D[j, j+1] = -104 / 12
+        second_D[j, j+2] = 114 / 12
+        second_D[j, j+3] = -56 / 12
+        second_D[j, j+4] = 11 / 12
     elif j == 1:
-        second_dR[j, j-1] =  11 / 12
-        second_dR[j, j] = -20 / 12
-        second_dR[j, j+1] = 6 / 12
-        second_dR[j, j+2] = 4 / 12
-        second_dR[j, j+3] = -1 / 12
+        second_D[j, j-1] =  11 / 12
+        second_D[j, j] = -20 / 12
+        second_D[j, j+1] = 6 / 12
+        second_D[j, j+2] = 4 / 12
+        second_D[j, j+3] = -1 / 12
     elif 2 < j < N-3:
-        second_dR[j, j-2] = -1 / 12
-        second_dR[j, j-1] = 4 / 3
-        second_dR[j, j] = -5 / 2
-        second_dR[j, j+1] = 4 / 3
-        second_dR[j, j+2] = -1 / 12
+        second_D[j, j-2] = -1 / 12
+        second_D[j, j-1] = 4 / 3
+        second_D[j, j] = -5 / 2
+        second_D[j, j+1] = 4 / 3
+        second_D[j, j+2] = -1 / 12
     elif j == N-2:
-        second_dR[j, j+1] =  11 / 12
-        second_dR[j, j] = -20 / 12
-        second_dR[j, j-1] = 6 / 12
-        second_dR[j, j-2] = 4 / 12
-        second_dR[j, j-3] = -1 / 12
+        second_D[j, j+1] =  11 / 12
+        second_D[j, j] = -20 / 12
+        second_D[j, j-1] = 6 / 12
+        second_D[j, j-2] = 4 / 12
+        second_D[j, j-3] = -1 / 12
     else:
-        second_dR[j, j] = 35 / 12
-        second_dR[j, j-1] = -104 / 12
-        second_dR[j, j-2] = 114 / 12
-        second_dR[j, j-3] = -56 / 12
-        second_dR[j, j-4] = 11 / 12
-# print('Second_dR:\n')
-# print(second_dR)
+        second_D[j, j] = 35 / 12
+        second_D[j, j-1] = -104 / 12
+        second_D[j, j-2] = 114 / 12
+        second_D[j, j-3] = -56 / 12
+        second_D[j, j-4] = 11 / 12
+# print('second_D:\n')
+# print(second_D)
 
 Schmidt_matrix_eff = np.zeros_like(A)
 for j in range(N):
@@ -109,10 +109,10 @@ for j in range(N):
 # print('this is Schmidt_matrix')
 # print(Schmidt_matrix_eff)
 
-A = (1 / dr**2) * second_dR + Schmidt_matrix_eff # change of variables
+A = (1 / dr**2) * second_D + Schmidt_matrix_eff # change of variables
 # Diagonalise A
 eigenvalues, unitary = np.linalg.eig(A) # unitary's columns are eigenvectors of A
-eigenvalues, unitary
+# eigenvalues, unitary
 ######################################################################
 
 
