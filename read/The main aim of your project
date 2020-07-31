@@ -5,5 +5,3 @@
 
     -You should make sure that your phase shift is converged with respect to the distance (because it is formally defined when r>>r_0). So you can try to plot the phase shift as a function of r for a fixed k to check this.
 
-        For this calculation, you need to use dimensionless variables. This is probably easiest to implement by we effectively setting r_0=1. This means that you should define your U(r) in Eq. (32) as U(R)/U_0 where U_0 is the energy scale U_0=\hbar^2/(2m_r r_0)^2 (in meV).
-
