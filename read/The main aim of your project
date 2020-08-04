@@ -1,7 +1,0 @@
--let's start by doing something really naive and simply ignore the fact that it is a 2D problem. Then we can use the variable phase approximation for 3D which is already developed in the OSU notes. Specifically, we should try to implement Eq. (32) and see what the phase shift looks like. We would be particularly interested in seeing whether the phase shift as a function of k has the usual form: 
-    k\cot\delta = -1/a.
-
-(So you could try to play around with different values of 'a' to see if there is any value that looks good.)
-
-    -You should make sure that your phase shift is converged with respect to the distance (because it is formally defined when r>>r_0). So you can try to plot the phase shift as a function of r for a fixed k to check this.
-
